@@ -7,74 +7,228 @@
         <!-- Required bootstrap meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <!-- Bootswatch CSS and custom CSS -->
         <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="simple-sidebar.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         <link rel="stylesheet" href="client.css">
-
         <title>Random Secrets from the Deep Web</title>
     </head>
 <!-------------------------------------------------------------------------
    1) Create some html content that can be accessed by jquery
 -------------------------------------------------------------------------->
     <body class="">
-        <div class="container">
-            <h2 style="text-align:center">Random Secrets from the Deep Web </h2>
+<script>
+</script>
+    <!--   -->
+        <div id="wrapper"><!-- start of universal wrapper-->
+            <div id="sidebar-wrapper"><!-- start of sidebar-wrapper -->
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a style="color:white">Options Menu</a>
+                    </li>
+                        <li>
+<!--make the A toggle the checkbox -->                        
+                            <a id="autoRefreshToggle" href="#" onclick="document.getElementById('autoRefreshCheckbox').click()">
+                                <input type="checkbox" id="autoRefreshCheckbox" onclick="toggleDisplayOfRefreshMenu()">  
+                                Enable Auto Refresh
+                                </input>
+                            </a>
+                        </li>
+                        <ul style="list-style: none">
+                            <li id="refreshDelay">Refresh Delay</li>
+                            <li id="delayMenu">
+                                <select id="delaySelection">
+                                  <option value="select">Select</option>
+                                  <option value="5">5 Seconds</option>
+                                  <option value="10">10 Seconds</option>
+                                  <option value="15">15 Seconds</option>
+                                  <option value="30">30 Seconds</option>
+                                </select>
+                            </li>
+                        </ul>
+                        </li>
+                    </li>
+                </ul>
+            </div><!-- end of sidebar-wrapper -->
+ 
+            <div id="page-content-wrapper"><!-- beginning of page-content-wrapper -->
+                <div class="container-fluid"><!-- beginning of container-fluid -->
 
-            <div class="row"><!-- beginning of row -->
-                <div class="table-responsive">
-                    <table class="table table-bordered table-dark table-hover">
-                        <thead></thead>
-                        <tbody>
-                            <tr>
-                                <td id="up_votes"></td>
-                                <td id="down_votes"></td>
-                                <td id="date_created"></td>
-                                <td id="secretId"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div><!-- end of row -->
+                    <h2 style="text-align:center">Random Secrets from the Deep Web </h2>
+ 
+                    <div class="row"><!-- beginning of row -->
+                        <button id="menu-toggle" type="button" class="btn btn-default btn-med btn-custom">
+                            <span class="fas fa-cogs fa-2x"></span>
+                        </button>
+                    </div><!-- end of row -->
 
-            <div class="row"><!-- beginning of row -->
-                <div class="table-responsive">
-                    <table id="secretTable" class="table table-bordered table-dark  table-hover">
-                        <tr>
-                            <th>Secret</th>
-                        </tr>
-                        <tr>
-                            <td id="secret"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div><!-- end of row -->
+                    <div class="row"><!-- beginning of row -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-dark table-hover">
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="up_votes"></td>
+                                        <td id="down_votes"></td>
+                                        <td id="date_created"></td>
+                                        <td id="secretId"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- end of row -->
+                    
+                    <div class="row"><!-- beginning of row -->
+                        <div class="table-responsive">
+                            <table id="secretTable" class="table table-bordered table-dark  table-hover">
+                                <tr>
+                                    <th>Secret</th>
+                                </tr>
+                                <tr>
+                                    <td id="secret"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div><!-- end of row -->
+                    
+                    <div class="row"><!-- beginning of row -->
+                        <div class="table-responsive">
+                            <table class="table table-striped table-dark table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th width="75%">Comment</th>
+                                        <th>Date Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="commentTable"></tbody>
+                            </table>
+                        </div>
+                    </div><!-- end of row -->
 
-            <div class="row"><!-- beginning of row -->
-                <div class="table-responsive">
-                    <table class="table table-striped table-dark table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th width="75%">Comment</th>
-                                <th>Date Created</th>
-                            </tr>
-                        </thead>
-                        <tbody id="commentTable"></tbody>
-                    </table>
-                </div>
-            </div><!-- end of row -->
+                </div><!-- end of container-fluid -->
+            </div><!-- end of page-content-wrapper -->
+        </div><!-- end of wrapper -->
 
-        </div><!-- beginning of container -->
+
+        <!--bootstrap and dependencies -->
+        <script src="jquery.js"></script>
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- options menu toggle script -->
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+
+            clearTimeout(timeout);
+
+            if (wrapper.classList.contains("toggled") == true ){
+                if((document.getElementById("autoRefreshCheckbox").checked) == true){
+                    if(document.getElementById("delaySelection").value == "select"){
+                        alert("You must set a delay time to enable Auto Refresh");
+                        return;
+                    } else {
+                        Cookies.set('autoRefreshEnabled', 'true');
+                        Cookies.set('autoRefreshValue', (document.getElementById("delaySelection").value));
+                        startAutoRefresh();
+                    }
+                } else {
+                        Cookies.set('autoRefreshEnabled', 'false');
+                        Cookies.set('autoRefreshValue', 'select');
+        }
+            }
+                console.log(Cookies.get()); 
+                $("#wrapper").toggleClass("toggled");
+
+            });
+                    
+            function toggleDisplayOfRefreshMenu(){
+                console.log('CLICKED');
+                if((document.getElementById("autoRefreshCheckbox").checked) == true){
+                    showRefreshMenu();
+                } else {
+                    hideRefreshMenu();
+                }
+            }    
+//             $("#autoRefreshCheckbox").click(function(e) {
+//                 e.preventDefault();
+//                 console.log(document.getElementById("autoRefreshCheckbox").checked);
+//                 if((document.getElementById("autoRefreshCheckbox").checked) == true){
+//                     console.log('clicked while true');
+//                     document.getElementById("autoRefreshCheckbox").checked = false;
+//                     hideRefreshMenu();
+
+//                 } else {
+//                     console.log('clicked while false');
+//                     document.getElementById("autoRefreshCheckbox").checked = true;
+//                     showRefreshMenu();
+//                 }
+//             });
+        </script>
+ 
+        <!-- cookie API script -->
+        <script src="js.cookie.min.js"></script>
+<!--
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+-->
+
+<script>console.log(Cookies.get());</script>
+
+<script>
+
+    //function definitions
+    function hideRefreshMenu(){
+        document.getElementById("refreshDelay").className = "hide";
+        document.getElementById("delayMenu").className = "hide";    
+    }
+
+    function showRefreshMenu(){
+        document.getElementById("refreshDelay").className = "";
+        document.getElementById("delayMenu").className = "";    
+    }
+
+    function setCookieRefreshValuesToDefault(){
+        Cookies.set('autoRefreshEnabled','false');
+        Cookies.set('autoRefreshValue', 'select');
+    }
+
+    function checkCheckBox(){
+        document.getElementById("autoRefreshCheckbox").checked = true;
+    }
+
+    function setAutoRefreshValueToCookieValue(){
+        var autoRefreshValue = Cookies.get('autoRefreshValue');
+        document.getElementById("delaySelection").value = autoRefreshValue;
+    }
+
+    function startAutoRefresh(){
+        var refreshIntervalInMilliseconds = Cookies.get('autoRefreshValue') * 1000;
+        console.log(refreshIntervalInMilliseconds);
+        timeout = setTimeout(function(){location.reload()}, refreshIntervalInMilliseconds);
+    }
+
+    //logic
+    timeout = null ;
+    if (Cookies.get('autoRefreshEnabled')!='true'){
+        setCookieRefreshValuesToDefault();
+        hideRefreshMenu();
+    } else {
+        showRefreshMenu();
+        checkCheckBox();
+        setAutoRefreshValueToCookieValue();
+        startAutoRefresh();
+    }
+
+</script>
+
     </body>
-    <!--bootstrap and dependencies -->
-    <script language="javascript" type="text/javascript" src="jquery.js"></script>
-    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Content Pull Script-->
     <script id="source" language="javascript" type="text/javascript">
-        
-        
+
     $(function() {
 //-----------------------------------------------------------------------
 // 2) Request secret followed by comments , by way of AJAX http://api.jquery.com/jQuery.ajax/
@@ -144,8 +298,8 @@
             }
         });
     });
+    </script>
 
-    
+        <script type="text/javascript">
     </script>
 </html>
-
